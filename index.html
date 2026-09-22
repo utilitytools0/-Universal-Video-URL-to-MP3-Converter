@@ -154,10 +154,10 @@
             loader.style.display = 'block';
             iframe.style.display = 'none';
 
-                     let targetEndpoint = '';
+                      let targetEndpoint = '';
 
             if (rawUrl.includes('youtube.com') || rawUrl.includes('youtu.be')) {
-                const ytMatch = rawUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^& \n]+)/);
+                const ytMatch = rawUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^& \n?]+)/);
                 if (ytMatch && ytMatch[1]) {
                     targetEndpoint = "https://convertapi.click" + ytMatch[1] + "?bq=" + quality;
                 }
@@ -167,8 +167,6 @@
                 const encodedUrl = encodeURIComponent(rawUrl);
                 targetEndpoint = "https://multidownload.click" + encodedUrl + "&quality=" + quality + "&format=mp3";
             }
-
-
             setTimeout(() => {
                 loader.style.display = 'none';
                 iframe.src = targetEndpoint;
